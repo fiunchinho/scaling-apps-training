@@ -1,0 +1,8 @@
+---
+- name: Rollback app
+  hosts: all
+  vars:
+    ansistrano_deploy_to: "/var/www/html"
+    ansistrano_remove_rolled_back: yes
+  roles:
+    - carlosbuenosvinos.ansistrano-rollback

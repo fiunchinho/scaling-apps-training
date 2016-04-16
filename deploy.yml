@@ -1,0 +1,10 @@
+---
+- name: Deploy app to my server
+  hosts: all
+  vars:
+    ansistrano_before_setup_tasks_file: "{{ playbook_dir }}/infrastructure.yml"
+    ansistrano_deploy_to: "/var/www/html"
+    ansistrano_keep_releases: 3
+    ansistrano_allow_anonymous_stats: false
+  roles:
+    - carlosbuenosvinos.ansistrano-deploy
