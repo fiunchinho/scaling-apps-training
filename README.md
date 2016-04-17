@@ -53,7 +53,7 @@ If a server fails a health check, and therefore is unable to serve requests, it 
 - [AWS Elastic Load Balancer](http://aws.amazon.com/elasticloadbalancing/)
 
 ## Deployment of this repository
-If you want to deploy the content of this repository to an EC2 instance to test the caching mechanisms, like CloudFront, follow these simple steps.
+If you want to deploy the content of this repository to an EC2 instance follow these simple steps.
 Go to the AWS Console and start a new EC2 micro instance. Choose the default VPC. To be able to later access the machine, create a new pair of SSH keys or choose an already existing pair. Wait for it to be available.
 
 While this happens, install [Ansible](https://docs.ansible.com/ansible/) and [Ansistrano](https://github.com/ansistrano/deploy) on your Vagrant
