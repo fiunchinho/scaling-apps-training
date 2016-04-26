@@ -24,7 +24,7 @@ use Aws\S3\S3Client;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
 
-$client = S3Client::factory([
+$client = new S3Client([
     'credentials' => [
         'key'    => 'your-key',
         'secret' => 'your-secret',
@@ -33,10 +33,16 @@ $client = S3Client::factory([
     'version' => 'latest',
 ]);
 
-$filesystem = new AwsS3Adapter($client, 'your-bucket-name', 'optional-prefix');
+$aws3adapter = new AwsS3Adapter($client, 'your-bucket-name', 'optional-prefix');
+
+$filesystem = new Filesystem($aws3adapter, new Config([]));
 
 // Write to file
 $filesystem->write('path/to/file.txt', 'contents');
+
+// Write to image
+$filesystem->write('path/to/image1.png', file_get_contents('local_path/to/image.png'));
+$filesystem->writeStream('path/to/image1.png', fopen('local_path/to/image.png', 'r'));
 
 // Read file
 $contents = $filesystem->read('path/to/file.txt');
