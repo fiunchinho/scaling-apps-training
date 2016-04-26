@@ -1,4 +1,4 @@
-# Redis
+# Caching with Redis
 Redis is an open source, in-memory data structure store, used as database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries.
 Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.
 
@@ -16,9 +16,22 @@ First you need to install Redis
 
 ```bash
 $ sudo yum install -y epel-release redis
+$ sudo systemctl restart redis
 ```
 
-If that command doesn't work, [follow these steps](http://sharadchhetri.com/2014/10/04/install-redis-server-centos-7-rhel-7/) to install the latest version of Redis. Typically, the configuration file for Redis is in `/etc/redis`, and it's listening on port 6379.
+If that command doesn't work, [follow these steps](http://sharadchhetri.com/2014/10/04/install-redis-server-centos-7-rhel-7/) to install the latest version of Redis. Typically, the configuration file for Redis is in `/etc/redis/redis.conf`, and it's listening on port `6379`.
+
+By default, Redis only allows connections to localhost, which basically means you´ll only have access from inside the server where Redis is installed. If you plan to connect to Redis from another server, you will have to update the config. Typically, you'll find this
+
+```
+bind 127.0.0.1
+```
+
+But you should add the IP address of the web server that will connect to Redis, that will allow us to connect to Redis from the same server, or the web server, for example
+
+```
+bind 127.0.0.1 192.168.14.9
+```
 
 ## Redis clients
 Once Redis is installed, there are different ways in which you can interact with redis. The simplest one is to do it directly through the command line
