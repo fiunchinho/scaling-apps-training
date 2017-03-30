@@ -1,12 +1,17 @@
 ---
 
-- name: "Install PHP5 and Apache2"
+- name: "Install PHP5"
   apt:
     name: php5
     state: present
     update_cache: yes
   become: yes
-  become_user: root
+
+- name: "Install Apache"
+  apt:
+    name: apache2
+    state: present
+  become: yes
 
 - name: "Ubuntu user is the owner of /var/www/html"
   file:
@@ -15,4 +20,3 @@
     group: ubuntu
     mode: 0755
   become: yes
-  become_user: root
