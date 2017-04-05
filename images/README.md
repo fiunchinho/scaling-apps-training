@@ -6,6 +6,11 @@ There are different strategies to overcome this problem. Here we'll fix it by up
 Changing the way your application stores files (from a local file system to a cloud provider) could take a lot of time, since instead of using native PHP functions you have to start talking with third party API's. The best strategy is to plan ahead, and use libraries like [flysystem](https://github.com/thephpleague/flysystem) or [Gaufrette](https://github.com/KnpLabs/Gaufrette) that abstract away the details about the file system that we are using. This way our code won't change when we decide to go from local file system to a cloud provider.
 
 ## Using FlySystem in PHP
+Flysystem requires the `php-xml` extension to be installed. You can install it with
+```bash
+$ sudo apt-get install php-xml
+$ sudo service apache2 restart
+```
 
 ```bash
 $ composer require league/flysystem
@@ -23,6 +28,7 @@ $ composer require league/flysystem-aws-s3-v3
 use Aws\S3\S3Client;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
+use League\Flysystem\Config;
 
 $client = new S3Client([
     'credentials' => [
