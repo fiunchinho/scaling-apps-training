@@ -43,7 +43,7 @@ Deploy our simple `index.php` file to your server and try loading the page with 
 You can see how sessions are being stored in Redis using the `redis-cli`
 
 ```bash
-$ redis-cli keys *
+$ redis-cli keys "*"
 1) "PHPREDIS_SESSION:j9rsgtde6st2rqb6lu5u6f4h83"
 2) "PHPREDIS_SESSION:dajlsd8asd7gdasod8897as6ds"
 ```

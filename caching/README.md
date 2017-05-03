@@ -56,7 +56,7 @@ Here is an example of connecting to Redis and executing some commands
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$client = new Predis\Client('tcp://192.168.99.100:6379');
+$redis = new Predis\Client('tcp://192.168.99.100:6379');
 
 // Saves value in the "hello_world" key
 $redis->set("hello_world", "Hi from php!");
